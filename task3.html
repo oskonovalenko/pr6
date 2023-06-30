@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ukraine">
+<html>
+<meta charset="UTF-8">
+<head>
+    <title>Тестування</title>
+    <style>
+        .question {
+            margin-bottom: 10px;
+        }
+        .option {
+            margin-bottom: 5px;
+        }
+        .option label {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<h2>Тестування </h2>
+<form id="quizForm">
+    <div class="question">
+        <p>Питання 1: Скільки буде 5+2</p>
+        <div class="option">
+            <input type="radio" id="q1_option1" name="q1" value="option1">
+            <label for="q1_option1">7</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="q1_option2" name="q1" value="option2">
+            <label for="q1_option2">77</label>
+        </div>
+
+    </div>
+
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    const form = document.getElementById('quizForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const answers = {
+            q1: 'option1', // Вірна відповідь для питання 1
+
+        };
+
+        let score = 0;
+
+        for (const question in answers) {
+            const selectedOption = form.elements[question].value;
+            if (selectedOption === answers[question]) {
+                score++;
+            }
+        }
+
+        alert(`Ваш результат: ${score} з ${Object.keys(answers).length}`);
+    });
+</script>
+</body>
+</html>
